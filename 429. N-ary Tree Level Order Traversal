@@ -1,1 +1,26 @@
+# Here is the Python Solution for this Problem using BFS (Breadth First Search)
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
 
+class Solution:
+    def levelOrder(self, root: 'Node') -> List[List[int]]:
+    # Checking if the root does not exist
+        if root is None:
+            return
+        queue = []
+        f = []
+        queue.append(root)
+        # We pop the first element from the queue iteratively and add it to the main queue, if the children of this poped element exist,we add them to the first queue
+        while queue:
+            final = []
+            for i in range(len(queue)):
+                node = queue.pop(0)
+                final.append(node.val)
+                queue+= node.children
+            f.append(final)
+        return(f)
